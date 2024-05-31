@@ -4,9 +4,9 @@ This project is an API for comments. It is built using Laravel and uses MySQL fo
 
 ## Installation
 
-1. Clone the repository:
+1. Enter the project:
     ```
-    git clone https://github.com/Misha-ship/RestAPI.git
+    cd RestAPI
     ```
 2. Build Docker Containers:
     ```
