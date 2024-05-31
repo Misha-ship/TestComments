@@ -1,0 +1,32 @@
+type Comment {
+    id: ID!
+    user_name: String!
+    email: String!
+    home_page: String
+    text: String!
+    created_at: String
+    updated_at: String
+    children: [Comment]
+}
+
+type PaginatedComments {
+    data: [Comment]
+    total: Int
+    per_page: Int
+    current_page: Int
+    last_page: Int
+}
+
+type Query {
+    comments(page: Int, limit: Int): PaginatedComments
+}
+
+type Mutation {
+    createComment(
+        user_name: String!
+        email: String!
+        home_page: String
+        text: String!
+        parent_id: Int
+    ): Comment
+}

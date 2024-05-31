@@ -1,0 +1,130 @@
+{
+	"info": {
+		"_postman_id": "8ccb6ba5-79ee-4133-a4b9-ea6f72d7a6e4",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23189521",
+		"_collection_link": "https://crimson-comet-607921.postman.co/workspace/My-Workspace~4c9b0f09-3e10-4c3b-82f8-d6158ec661ce/collection/23189521-8ccb6ba5-79ee-4133-a4b9-ea6f72d7a6e4?action=share&source=collection_link&creator=23189521"
+	},
+	"item": [
+		{
+			"name": "GraphGL",
+			"item": [
+				{
+					"name": "Create Comment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n  createComment(\n    user_name: \"misha6761\",\n    email: \"testuser@example.com\",\n    home_page: \"http://example.com\",\n    text: \"This is a test comment.\",\n    parent_id: 1\n  ) {\n    id\n    user_name\n    email\n    home_page\n    text\n    created_at\n    updated_at\n  }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Posts",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n  comments(page: 1, limit: 25) {\n    data {\n      id\n      user_name\n      email\n      home_page\n      text\n      created_at\n      updated_at\n      children {\n        id\n        user_name\n        text\n      }\n    }\n    total\n    per_page\n    current_page\n    last_page\n  }\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "http://localhost/graphql",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"graphql"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get Comments",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Create Comment",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Search by ElasticSearch",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost/api/comments/search?query=like",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"comments",
+						"search"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "like"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
